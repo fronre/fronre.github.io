@@ -5,184 +5,320 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mohammed Islam Hala | Backend Developer</title>
 <meta name="description" content="Mohammed Islam Hala, backend developer building typed, documented APIs with FastAPI.">
+<meta name="theme-color" content="#070b17">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#edf0ec;--card:#f8faf7;--ink:#101614;--muted:#55605b;--line:#d3dad4;--accent:#0b7a6b}
-@media (prefers-color-scheme:dark){:root{--paper:#0e1412;--card:#151d1a;--ink:#e8eee9;--muted:#9aa7a0;--line:#26312c;--accent:#3fd0b9}}
+:root{--bg:#070b17;--glass:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--text:#e9eefc;--muted:#97a3c0;--blue:#4f8cff;--violet:#a56bff;--teal:#14c8b4;--grad:linear-gradient(100deg,#4f8cff,#a56bff)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:400 17px/1.65 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.025em;line-height:1.05}
+body{background:radial-gradient(1200px 700px at 80% -10%,#142046 0,transparent 60%),radial-gradient(900px 600px at -10% 40%,#1a1140 0,transparent 55%),var(--bg);color:var(--text);font:400 17px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:Outfit,sans-serif;letter-spacing:-.02em;line-height:1.08}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-header.top{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
-header.top b{font:700 18px "Bricolage Grotesque";letter-spacing:-.02em}
-header.top nav{display:flex;gap:26px;font-size:15px;color:var(--muted)}
-header.top nav a{text-decoration:none}
-header.top nav a:hover{color:var(--ink)}
+nav.top{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);background:rgba(7,11,23,.62);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:700 20px Outfit;letter-spacing:-.02em}
+nav.top ul{display:flex;gap:30px;list-style:none;font-size:15px;color:var(--muted)}
+nav.top ul a:hover{color:var(--text)}
+.pill{padding:9px 18px;border-radius:99px;background:var(--grad);font-weight:600;font-size:14px;color:#fff}
+@media(max-width:760px){nav.top ul{display:none}}
 
-.hero{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:56px;align-items:end;padding:40px 0 96px}
-.photo{aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:var(--line)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.hero h1{font-size:clamp(48px,8.4vw,104px);font-weight:800}
-.hero .role{font:500 clamp(20px,2.6vw,28px)/1.3 "Bricolage Grotesque";margin:22px 0 14px}
-.hero p{color:var(--muted);max-width:50ch}
-.links{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-weight:600}
-.links a{color:var(--accent);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
-.hero .photo,.hero .txt{animation:in .8s cubic-bezier(.2,.7,.2,1) both}
-.hero .txt{animation-delay:.12s}
-@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;min-height:calc(100vh - 64px);padding:40px 0 70px}
+.hello{display:inline-flex;gap:10px;align-items:center;padding:7px 15px;border:1px solid var(--line);border-radius:99px;background:var(--glass);font-size:14px;color:var(--muted)}
+.hello i{width:8px;height:8px;border-radius:50%;background:#2ee59d;box-shadow:0 0 0 4px rgba(46,229,157,.18)}
+.hero h1{font-size:clamp(44px,7.4vw,90px);font-weight:800;margin:22px 0 12px}
+.typed{font:600 clamp(20px,2.8vw,30px) Outfit;color:#cdd6f0;min-height:40px}
+.typed b{color:var(--teal)}
+.caret{display:inline-block;width:3px;height:1em;background:var(--teal);margin-left:3px;vertical-align:-3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.lead{color:var(--muted);max-width:52ch;margin:18px 0 32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:99px;font-weight:600;font-size:16px;border:1px solid var(--line);background:var(--glass);transition:.25s}
+.btn:hover{transform:translateY(-3px);border-color:var(--blue)}
+.btn.p{background:var(--grad);border-color:transparent;box-shadow:0 14px 40px -12px rgba(120,100,255,.7)}
 
-section{padding:72px 0;border-top:1px solid var(--line)}
-section>h2{font-size:clamp(32px,4.6vw,52px);font-weight:700;margin-bottom:12px}
-section>.sub{color:var(--muted);margin-bottom:44px;max-width:56ch}
+.visual{position:relative;display:grid;place-items:center}
+.orb{position:relative;width:min(100%,480px);aspect-ratio:1;display:grid;place-items:center}
+.photo{width:56%;aspect-ratio:4/5;border-radius:26px;padding:3px;background:linear-gradient(140deg,var(--teal),var(--blue),var(--violet));box-shadow:0 40px 80px -30px rgba(80,90,255,.6);transition:transform .25s;will-change:transform}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:24px;display:block;background:#10172d}
+.chip{position:absolute;padding:8px 15px;border-radius:14px;background:rgba(14,20,42,.78);backdrop-filter:blur(8px);border:1px solid var(--line);font:600 14px Outfit;animation:fl 6s ease-in-out infinite}
+.chip.a{left:2%;top:14%;color:var(--teal)}
+.chip.b{right:0;top:24%;animation-delay:-2s;color:#7aa7ff}
+.chip.c{left:6%;bottom:16%;animation-delay:-4s;color:#c9a2ff}
+.chip.d{right:4%;bottom:8%;animation-delay:-1s;color:#ffd27a}
+@keyframes fl{50%{transform:translateY(-14px)}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0;padding-top:30px}.orb{width:min(100%,380px);margin:0 auto}}
 
-.works{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 28px}
-.work{display:block;text-decoration:none}
-.work .shot{aspect-ratio:2/1;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
-.work img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.work:hover img{transform:scale(1.03)}
-.work h3{font-size:24px;font-weight:700;margin:16px 0 6px}
-.work p{color:var(--muted);font-size:16px}
-.work small{display:block;margin-top:8px;font-size:14px;color:var(--accent);font-weight:600}
-.tile{display:grid;place-items:center;text-align:center;padding:24px;font:800 clamp(30px,5vw,56px)/1 "Bricolage Grotesque";letter-spacing:-.035em;color:var(--ink)}
-.t1{background:color-mix(in srgb,var(--accent) 20%,var(--card))}
-.t2{background:color-mix(in srgb,var(--accent) 11%,var(--card))}
-.t3{background:color-mix(in srgb,var(--accent) 6%,var(--card))}
-.work.big{grid-column:1/-1}
-.work.big .shot{aspect-ratio:21/9}
+section{padding:84px 0}
+.head{margin-bottom:40px}
+.head h2{font-size:clamp(32px,5vw,52px);font-weight:800}
+.head p{color:var(--muted);margin-top:10px;max-width:56ch}
 
-.more{margin-top:56px}
-.more h3{font-size:22px;margin-bottom:6px}
-.row{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
-.row:first-of-type{border-top:1px solid var(--line)}
-.row:hover b{color:var(--accent)}
-.row b{font-weight:600}
-.row span{color:var(--muted);text-align:right;font-size:15px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;position:relative;overflow:hidden;transition:transform .2s,border-color .3s;will-change:transform}
+.glass::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,0%),rgba(120,140,255,.16),transparent 60%);opacity:0;transition:opacity .3s}
+.glass:hover{border-color:rgba(130,140,255,.45)}
+.glass:hover::after{opacity:1}
 
-dl{display:grid;grid-template-columns:200px 1fr;gap:0}
-dt,dd{padding:18px 0;border-top:1px solid var(--line)}
-dt{font:700 20px "Bricolage Grotesque"}
-dd{color:var(--muted)}
-dd b{color:var(--ink);font-weight:600}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.about .glass{padding:30px}
+.about p{color:#c4cde6}
+.facts{display:grid;gap:14px}
+.facts .glass{padding:20px 24px}
+.facts b{display:block;font:800 32px Outfit}
+.facts span{color:var(--muted);font-size:15px}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
 
-.contact h2{font-size:clamp(40px,7vw,88px);font-weight:800;max-width:14ch}
-.contact .mail{display:inline-block;margin-top:28px;font:700 clamp(20px,3vw,32px) "Bricolage Grotesque";color:var(--accent);text-underline-offset:8px;text-decoration-thickness:3px}
-.contact .links{margin-top:22px}
-footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.skills .glass{padding:26px}
+.skills h3{font-size:20px;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:14px;padding:6px 13px;border-radius:99px;border:1px solid var(--line);color:#c4cde6;background:rgba(255,255,255,.03)}
+.tags span.h{border-color:rgba(20,200,180,.6);color:var(--teal);background:rgba(20,200,180,.1);font-weight:600}
 
-@media(max-width:760px){
-  .hero{grid-template-columns:1fr;gap:32px;padding-bottom:64px}
-  .photo{max-width:320px}
-  .works{grid-template-columns:1fr}
-  .work.big .shot{aspect-ratio:2/1}
-  dl{grid-template-columns:1fr}
-  dt{padding-bottom:0;border-bottom:0}
-  dd{border-top:0;padding-top:4px}
-  .row{grid-template-columns:1fr}
-  .row span{text-align:left}
-  header.top nav{gap:16px}
-}
-@media(prefers-reduced-motion:reduce){.hero .photo,.hero .txt{animation:none}.work img{transition:none}html{scroll-behavior:auto}}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{font:inherit;font-size:15px;padding:9px 20px;border-radius:99px;border:1px solid var(--line);background:var(--glass);color:var(--muted);cursor:pointer}
+.filters button.on{background:var(--grad);color:#fff;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+.card{display:flex;flex-direction:column}
+.card.hide{display:none}
+.shot{aspect-ratio:16/9;overflow:hidden;background:#0c1330;display:grid;place-items:center}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.tile{font:800 clamp(26px,3.4vw,36px) Outfit;letter-spacing:-.03em;text-align:center;padding:16px}
+.t1{background:linear-gradient(135deg,#0d6e66,#1d3f9c)}
+.t2{background:linear-gradient(135deg,#3b2aa8,#8a46d6)}
+.t3{background:linear-gradient(135deg,#0f5f8f,#14c8b4)}
+.t4{background:linear-gradient(135deg,#6a2594,#d6467c)}
+.card .b{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:22px}
+.card p{color:var(--muted);font-size:15.5px;flex:1}
+.card .tags span{font-size:12.5px;padding:4px 11px}
+.card .code{align-self:flex-start;margin-top:4px;padding:8px 18px;border-radius:99px;border:1px solid var(--line);font-weight:600;font-size:14px}
+.card .code:hover{border-color:var(--teal);color:var(--teal)}
+
+.more{margin-top:36px}
+.more h3{font-size:22px;margin-bottom:14px}
+.more .tags a{font-size:14.5px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);color:#c4cde6;background:var(--glass)}
+.more .tags a:hover{border-color:var(--blue);color:#fff}
+
+.contact .glass{padding:clamp(32px,6vw,64px);text-align:center;background:linear-gradient(135deg,rgba(79,140,255,.14),rgba(165,107,255,.12))}
+.contact h2{font-size:clamp(34px,6vw,64px);font-weight:800}
+.contact p{color:var(--muted);margin:12px auto 28px;max-width:46ch}
+.mail{display:inline-block;font:700 clamp(18px,3vw,28px) Outfit;margin-bottom:26px}
+footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
+@media(prefers-reduced-motion:reduce){.chip,.caret{animation:none}html{scroll-behavior:auto}.glass,.photo{transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <b>fronre</b>
-    <nav><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
-  </header>
+<canvas id="bg" aria-hidden="true"></canvas>
 
-  <main>
-    <div class="hero">
-      <div class="photo"><img src="photo.jpg" onerror="this.onerror=null;this.src='https://github.com/fronre.png?size=640'" alt="Portrait of Mohammed Islam Hala" width="640" height="800"></div>
-      <div class="txt">
-        <h1>Mohammed Islam Hala</h1>
-        <p class="role">Backend developer. I build APIs with FastAPI.</p>
-        <p>I design typed, documented services with Clean Architecture, and I connect AI agents to real tools. I also work on data, IoT and security projects.</p>
-        <div class="links">
-          <a href="#work">See my work</a>
-          <a href="https://github.com/fronre" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/hala-mohammed-islam-092287208/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+<nav class="top">
+  <div class="wrap">
+    <a href="#top" class="logo g">fronre</a>
+    <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+    <a class="pill" href="#contact">Hire me</a>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <span class="hello"><i></i>Open to collaborations</span>
+      <h1 class="g">Mohammed Islam Hala</h1>
+      <div class="typed"><span id="typed"></span><span class="caret"></span></div>
+      <p class="lead">Backend developer. I design typed, documented services with FastAPI and Clean Architecture, and I connect AI agents to real tools. I also build data, IoT and security projects.</p>
+      <div class="btns">
+        <a class="btn p" href="#projects">See my work</a>
+        <a class="btn" href="https://github.com/fronre" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/hala-mohammed-islam-092287208/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+    <div class="visual">
+      <div class="orb" id="orb">
+        <div class="photo" data-tilt><img src="photo.jpg" onerror="this.onerror=null;this.src='https://github.com/fronre.png?size=640'" alt="Portrait of Mohammed Islam Hala" width="640" height="800"></div>
+        <span class="chip a">FastAPI</span><span class="chip b">Python</span><span class="chip c">MCP</span><span class="chip d">Docker</span>
+      </div>
+    </div>
+  </header>
 
-    <section id="work">
-      <h2>Work</h2>
-      <p class="sub">A selection of projects from my GitHub. Each one opens the code.</p>
-      <div class="works">
-        <a class="work big" href="https://github.com/fronre/clark-wilson-tool" target="_blank" rel="noopener">
-          <div class="shot tile t1">Clark–Wilson</div>
-          <h3>Clark–Wilson Modeling Tool</h3>
-          <p>Checks a system model against the Clark–Wilson integrity model. The FastAPI backend uses Clean Architecture, with each rule as its own class, and a typed TypeScript frontend sits on top.</p>
-          <small>FastAPI, Pydantic, TypeScript</small>
-        </a>
-        <a class="work" href="https://github.com/fronre/PT-MCP-Bridge" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/PT-MCP-Bridge/main/demo/topology-screenshot.png" alt="Network topology built by PT-MCP-Bridge in Cisco Packet Tracer"></div>
-          <h3>PT-MCP-Bridge</h3>
-          <p>Describe a network in plain words and your AI plans, validates and builds it in Cisco Packet Tracer.</p>
-          <small>Python, MCP, 295+ commits</small>
-        </a>
-        <a class="work" href="https://github.com/fronre/Procura" target="_blank" rel="noopener">
-          <div class="shot tile t2">Procura</div>
-          <h3>Procura</h3>
+  <section id="about">
+    <div class="head"><h2>About <span class="g">me</span></h2></div>
+    <div class="about">
+      <div class="glass" data-tilt>
+        <p>I turn messy problems into clean APIs. My daily tool is FastAPI: async code, Pydantic validation and automatic OpenAPI docs. I structure services with Clean Architecture so each rule and use case can be tested on its own.</p>
+        <p style="margin-top:14px">Beyond APIs, I build bridges between AI agents and real software through MCP, and I work on blockchain, big data and IoT labs. I'm currently learning machine learning.</p>
+      </div>
+      <div class="facts">
+        <div class="glass" data-tilt><b class="g">FastAPI</b><span>My main framework</span></div>
+        <div class="glass" data-tilt><b class="g">295+</b><span>Commits on PT-MCP-Bridge</span></div>
+        <div class="glass" data-tilt><b class="g">30+</b><span>Public repositories</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="head"><h2>Skills &amp; <span class="g">tools</span></h2><p>What I work with, grouped by area.</p></div>
+    <div class="skills">
+      <div class="glass" data-tilt><h3>Backend</h3><div class="tags"><span class="h">FastAPI</span><span class="h">Python</span><span>Pydantic</span><span>Django</span><span>Node.js</span><span>Express</span><span>REST design</span></div></div>
+      <div class="glass" data-tilt><h3>Data</h3><div class="tags"><span>MongoDB</span><span>Cassandra</span><span>Spark</span><span>Docker</span></div></div>
+      <div class="glass" data-tilt><h3>Frontend &amp; mobile</h3><div class="tags"><span>TypeScript</span><span>Vite</span><span>Kotlin</span></div></div>
+      <div class="glass" data-tilt><h3>Security &amp; IoT</h3><div class="tags"><span>Blockchain</span><span>Clark–Wilson</span><span>SSI</span><span>ESP32</span><span>Embedded C++</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="head"><h2>Featured <span class="g">projects</span></h2><p>A selection from my GitHub. Each card opens the code.</p></div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button><button data-f="api">APIs</button><button data-f="ai">AI / MCP</button><button data-f="web">Web</button><button data-f="iot">IoT &amp; Security</button>
+    </div>
+    <div class="grid" id="grid">
+      <article class="glass card" data-c="api" data-tilt>
+        <div class="shot tile t1">Clark–Wilson Tool</div>
+        <div class="b"><h3>Clark–Wilson Modeling Tool</h3>
+          <p>Checks a system model against the Clark–Wilson integrity model. FastAPI backend in Clean Architecture, each rule as its own class, with a typed TypeScript frontend.</p>
+          <div class="tags"><span>FastAPI</span><span>Pydantic</span><span>TypeScript</span></div>
+          <a class="code" href="https://github.com/fronre/clark-wilson-tool" target="_blank" rel="noopener">View code</a></div>
+      </article>
+      <article class="glass card" data-c="ai" data-tilt>
+        <div class="shot"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/PT-MCP-Bridge/main/demo/topology-screenshot.png" alt="Network topology built by PT-MCP-Bridge in Cisco Packet Tracer"></div>
+        <div class="b"><h3>PT-MCP-Bridge</h3>
+          <p>Describe a network in plain words and your AI plans, validates and builds it in Cisco Packet Tracer through an MCP server.</p>
+          <div class="tags"><span>Python</span><span>MCP</span><span>295+ commits</span></div>
+          <a class="code" href="https://github.com/fronre/PT-MCP-Bridge" target="_blank" rel="noopener">View code</a></div>
+      </article>
+      <article class="glass card" data-c="web" data-tilt>
+        <div class="shot tile t2">Procura</div>
+        <div class="b"><h3>Procura</h3>
           <p>A web application built with TypeScript, Vite and Bun.</p>
-          <small>TypeScript, Vite</small>
-        </a>
-        <a class="work" href="https://github.com/fronre/ESP32-S3-Smart-Environment-Monitoring" target="_blank" rel="noopener">
-          <div class="shot tile t3">ESP32-S3</div>
-          <h3>Smart Environment Monitoring</h3>
+          <div class="tags"><span>TypeScript</span><span>Vite</span><span>Bun</span></div>
+          <a class="code" href="https://github.com/fronre/Procura" target="_blank" rel="noopener">View code</a></div>
+      </article>
+      <article class="glass card" data-c="iot" data-tilt>
+        <div class="shot tile t3">ESP32-S3</div>
+        <div class="b"><h3>Smart Environment Monitoring</h3>
           <p>An IoT monitoring system running on an ESP32-S3.</p>
-          <small>ESP32-S3, IoT</small>
-        </a>
-        <a class="work" href="https://github.com/fronre/SECURE-BLOCKCHAIN-NETWORK-LAB" target="_blank" rel="noopener">
-          <div class="shot tile t2">Blockchain lab</div>
-          <h3>Secure Blockchain Network Lab</h3>
+          <div class="tags"><span>ESP32-S3</span><span>IoT</span><span>Embedded</span></div>
+          <a class="code" href="https://github.com/fronre/ESP32-S3-Smart-Environment-Monitoring" target="_blank" rel="noopener">View code</a></div>
+      </article>
+      <article class="glass card" data-c="iot" data-tilt>
+        <div class="shot tile t4">Blockchain Lab</div>
+        <div class="b"><h3>Secure Blockchain Network Lab</h3>
           <p>Lab work on blockchain, cryptography and network security.</p>
-          <small>Blockchain, Security</small>
-        </a>
+          <div class="tags"><span>Blockchain</span><span>Security</span><span>Cryptography</span></div>
+          <a class="code" href="https://github.com/fronre/SECURE-BLOCKCHAIN-NETWORK-LAB" target="_blank" rel="noopener">View code</a></div>
+      </article>
+    </div>
+    <div class="more">
+      <h3>Also built</h3>
+      <div class="tags">
+        <a href="https://github.com/fronre/Real_Time_Final_Project" target="_blank" rel="noopener">Real Time Final Project</a>
+        <a href="https://github.com/fronre/TP1-IoT-Security-Cybersecurity" target="_blank" rel="noopener">IoT Security</a>
+        <a href="https://github.com/fronre/TP05_Database_mongodb" target="_blank" rel="noopener">MongoDB lab</a>
+        <a href="https://github.com/fronre/TP04_Docker" target="_blank" rel="noopener">Docker lab</a>
+        <a href="https://github.com/fronre/system-tournament" target="_blank" rel="noopener">Tournament system</a>
+        <a href="https://github.com/fronre/website_taleb_arabic" target="_blank" rel="noopener">Arabic student website</a>
       </div>
+    </div>
+  </section>
 
-      <div class="more">
-        <h3>Also built</h3>
-        <a class="row" href="https://github.com/fronre/Real_Time_Final_Project" target="_blank" rel="noopener"><b>Real Time Final Project</b><span>Python</span></a>
-        <a class="row" href="https://github.com/fronre/TP1-IoT-Security-Cybersecurity" target="_blank" rel="noopener"><b>IoT Security and Cybersecurity</b><span>Python</span></a>
-        <a class="row" href="https://github.com/fronre/TP05_Database_mongodb" target="_blank" rel="noopener"><b>MongoDB database lab</b><span>Python, MongoDB</span></a>
-        <a class="row" href="https://github.com/fronre/TP04_Docker" target="_blank" rel="noopener"><b>Docker lab</b><span>Python, Docker</span></a>
-        <a class="row" href="https://github.com/fronre/system-tournament" target="_blank" rel="noopener"><b>Tournament system</b><span>HTML, MIT license</span></a>
-        <a class="row" href="https://github.com/fronre/website_taleb_arabic" target="_blank" rel="noopener"><b>Arabic student website</b><span>JavaScript</span></a>
+  <section id="contact" class="contact">
+    <div class="glass" data-tilt>
+      <h2>Let's build <span class="g">something</span></h2>
+      <p>I'm open to FastAPI backends, APIs and collaborations. Tell me what you need.</p>
+      <a class="mail g" href="mailto:islamhala35@gmail.com">islamhala35@gmail.com</a>
+      <div class="btns" style="justify-content:center">
+        <a class="btn" href="https://github.com/fronre" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/hala-mohammed-islam-092287208/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://www.instagram.com/hala_med_islam/" target="_blank" rel="noopener">Instagram</a>
       </div>
-    </section>
+    </div>
+  </section>
+</main>
+<footer>© <span id="y"></span> Mohammed Islam Hala</footer>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <dl>
-        <dt>Backend</dt><dd><b>FastAPI</b>, <b>Python</b>, Pydantic, Django, Node.js, Express, async code, REST design</dd>
-        <dt>Data</dt><dd>MongoDB, Cassandra, Spark, Docker</dd>
-        <dt>Frontend and mobile</dt><dd>TypeScript, Vite, Kotlin</dd>
-        <dt>Security and IoT</dt><dd>Blockchain, Clark–Wilson, self-sovereign identity, ESP32, embedded C++</dd>
-        <dt>Learning</dt><dd>Machine learning</dd>
-      </dl>
-    </section>
-
-    <section id="contact" class="contact">
-      <h2>Let's build something.</h2>
-      <a class="mail" href="mailto:islamhala35@gmail.com">islamhala35@gmail.com</a>
-      <div class="links">
-        <a href="https://github.com/fronre" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/hala-mohammed-islam-092287208/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.instagram.com/hala_med_islam/" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>© <span id="y"></span> Mohammed Islam Hala</footer>
-</div>
-<script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+// typing
+(function(){
+  var words=["FastAPI backends","async Python services","AI-to-tool bridges (MCP)","clean, documented APIs"];
+  var el=document.getElementById("typed"),w=0,i=0,del=false;
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.innerHTML="I build <b>"+words[0]+"</b>";return}
+  function tick(){var t=words[w];el.innerHTML="I build <b>"+t.slice(0,i)+"</b>";
+    if(!del&&i===t.length){del=true;return setTimeout(tick,1500)}
+    if(del&&i===0){del=false;w=(w+1)%words.length}
+    i+=del?-1:1;setTimeout(tick,del?35:70)}
+  tick();
+})();
+// filters
+document.getElementById("filters").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll("#filters button").forEach(function(x){x.classList.toggle("on",x===b)});
+  document.querySelectorAll("#grid .card").forEach(function(c){c.classList.toggle("hide",b.dataset.f!=="all"&&c.dataset.c!==b.dataset.f)});
+});
+// 3D tilt cards
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:hover)").matches){
+  document.querySelectorAll("[data-tilt]").forEach(function(el){
+    el.addEventListener("pointermove",function(e){
+      var b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
+      el.style.transform="perspective(900px) rotateY("+(x*12)+"deg) rotateX("+(-y*12)+"deg) translateZ(6px)";
+      el.style.setProperty("--gx",((x+.5)*100)+"%");el.style.setProperty("--gy",((y+.5)*100)+"%");
+    });
+    el.addEventListener("pointerleave",function(){el.style.transform=""});
+  });
+}
+// WebGL scene: particle network + wireframe orb behind the portrait
+(function(){
+  if(!window.THREE)return;
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var cv=document.getElementById("bg"),r;
+  try{r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){return}
+  r.setPixelRatio(Math.min(devicePixelRatio,2));
+  var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=14;
+  var N=innerWidth<700?55:95,P=[],V=[],B={x:19,y:11,z:7},k;
+  for(k=0;k<N;k++){P.push(new THREE.Vector3((Math.random()-.5)*2*B.x,(Math.random()-.5)*2*B.y,(Math.random()-.5)*2*B.z));
+    V.push(new THREE.Vector3((Math.random()-.5)*.014,(Math.random()-.5)*.014,(Math.random()-.5)*.008))}
+  var pg=new THREE.BufferGeometry();pg.setAttribute("position",new THREE.BufferAttribute(new Float32Array(N*3),3));
+  scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x8fb0ff,size:.11,transparent:true,opacity:.95})));
+  var lg=new THREE.BufferGeometry();lg.setAttribute("position",new THREE.BufferAttribute(new Float32Array(N*N*3),3));
+  var lines=new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x5f7dff,transparent:true,opacity:.26}));scene.add(lines);
+  var orb=new THREE.Group();
+  var m1=new THREE.Mesh(new THREE.IcosahedronGeometry(2.7,1),new THREE.MeshBasicMaterial({color:0x14c8b4,wireframe:true,transparent:true,opacity:.5}));
+  var m2=new THREE.Mesh(new THREE.OctahedronGeometry(1.6,0),new THREE.MeshBasicMaterial({color:0xa56bff,wireframe:true,transparent:true,opacity:.75}));
+  var m3=new THREE.Mesh(new THREE.TorusGeometry(3.7,.025,8,140),new THREE.MeshBasicMaterial({color:0x4f8cff,transparent:true,opacity:.8}));
+  m3.rotation.x=1.15;orb.add(m1,m2,m3);scene.add(orb);
+  var holder=document.getElementById("orb"),mx=0,my=0,tx=0,ty=0;
+  addEventListener("pointermove",function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5});
+  function size(){r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
+  size();addEventListener("resize",size);
+  function frame(t){
+    mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+    var pa=pg.attributes.position.array,la=lg.attributes.position.array,n=0,i,j,d,a,b;
+    for(i=0;i<N;i++){a=P[i];if(!reduce)a.add(V[i]);
+      if(Math.abs(a.x)>B.x)V[i].x*=-1;if(Math.abs(a.y)>B.y)V[i].y*=-1;if(Math.abs(a.z)>B.z)V[i].z*=-1;
+      pa[i*3]=a.x;pa[i*3+1]=a.y;pa[i*3+2]=a.z;
+      for(j=i+1;j<N;j++){b=P[j];d=a.distanceTo(b);
+        if(d<4.4){la[n++]=a.x;la[n++]=a.y;la[n++]=a.z;la[n++]=b.x;la[n++]=b.y;la[n++]=b.z}}}
+    pg.attributes.position.needsUpdate=true;lg.attributes.position.needsUpdate=true;lg.setDrawRange(0,n/3);
+    cam.position.x=mx*3;cam.position.y=-my*2;cam.lookAt(0,0,0);
+    var rc=holder.getBoundingClientRect(),h=Math.tan(cam.fov*Math.PI/360)*cam.position.z;
+    var cx=(rc.left+rc.width/2)/innerWidth*2-1,cy=-((rc.top+rc.height/2)/innerHeight*2-1);
+    orb.position.set(cx*h*cam.aspect+cam.position.x*0,cy*h,0);
+    var s=rc.width/innerWidth*cam.aspect*h*2/7.6;orb.scale.setScalar(s);
+    orb.visible=rc.bottom>0&&rc.top<innerHeight;
+    if(!reduce){m1.rotation.x=t*.0003;m1.rotation.y=t*.0004;m2.rotation.y=-t*.0007;m2.rotation.z=t*.0004;m3.rotation.z=t*.0003}
+    orb.rotation.y=mx*1.2;orb.rotation.x=my*1.0;
+    r.render(scene,cam);
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if(reduce)addEventListener("scroll",function(){requestAnimationFrame(frame)},{passive:true});
+})();
+</script>
 </body>
 </html>
