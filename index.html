@@ -49,6 +49,10 @@ section>.sub{color:var(--muted);margin-bottom:44px;max-width:56ch}
 .work h3{font-size:24px;font-weight:700;margin:16px 0 6px}
 .work p{color:var(--muted);font-size:16px}
 .work small{display:block;margin-top:8px;font-size:14px;color:var(--accent);font-weight:600}
+.tile{display:grid;place-items:center;text-align:center;padding:24px;font:800 clamp(30px,5vw,56px)/1 "Bricolage Grotesque";letter-spacing:-.035em;color:var(--ink)}
+.t1{background:color-mix(in srgb,var(--accent) 20%,var(--card))}
+.t2{background:color-mix(in srgb,var(--accent) 11%,var(--card))}
+.t3{background:color-mix(in srgb,var(--accent) 6%,var(--card))}
 .work.big{grid-column:1/-1}
 .work.big .shot{aspect-ratio:21/9}
 
@@ -113,31 +117,31 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
       <p class="sub">A selection of projects from my GitHub. Each one opens the code.</p>
       <div class="works">
         <a class="work big" href="https://github.com/fronre/clark-wilson-tool" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://opengraph.githubassets.com/1/fronre/clark-wilson-tool" alt="clark-wilson-tool repository preview"></div>
+          <div class="shot tile t1">Clark–Wilson</div>
           <h3>Clark–Wilson Modeling Tool</h3>
           <p>Checks a system model against the Clark–Wilson integrity model. The FastAPI backend uses Clean Architecture, with each rule as its own class, and a typed TypeScript frontend sits on top.</p>
           <small>FastAPI, Pydantic, TypeScript</small>
         </a>
         <a class="work" href="https://github.com/fronre/PT-MCP-Bridge" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://opengraph.githubassets.com/1/fronre/PT-MCP-Bridge" alt="PT-MCP-Bridge repository preview"></div>
+          <div class="shot"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/PT-MCP-Bridge/main/demo/topology-screenshot.png" alt="Network topology built by PT-MCP-Bridge in Cisco Packet Tracer"></div>
           <h3>PT-MCP-Bridge</h3>
           <p>Describe a network in plain words and your AI plans, validates and builds it in Cisco Packet Tracer.</p>
           <small>Python, MCP, 295+ commits</small>
         </a>
         <a class="work" href="https://github.com/fronre/Procura" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://opengraph.githubassets.com/1/fronre/Procura" alt="Procura repository preview"></div>
+          <div class="shot tile t2">Procura</div>
           <h3>Procura</h3>
           <p>A web application built with TypeScript, Vite and Bun.</p>
           <small>TypeScript, Vite</small>
         </a>
         <a class="work" href="https://github.com/fronre/ESP32-S3-Smart-Environment-Monitoring" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://opengraph.githubassets.com/1/fronre/ESP32-S3-Smart-Environment-Monitoring" alt="ESP32-S3 monitoring repository preview"></div>
+          <div class="shot tile t3">ESP32-S3</div>
           <h3>Smart Environment Monitoring</h3>
           <p>An IoT monitoring system running on an ESP32-S3.</p>
           <small>ESP32-S3, IoT</small>
         </a>
         <a class="work" href="https://github.com/fronre/SECURE-BLOCKCHAIN-NETWORK-LAB" target="_blank" rel="noopener">
-          <div class="shot"><img loading="lazy" src="https://opengraph.githubassets.com/1/fronre/SECURE-BLOCKCHAIN-NETWORK-LAB" alt="Secure blockchain network lab repository preview"></div>
+          <div class="shot tile t2">Blockchain lab</div>
           <h3>Secure Blockchain Network Lab</h3>
           <p>Lab work on blockchain, cryptography and network security.</p>
           <small>Blockchain, Security</small>
