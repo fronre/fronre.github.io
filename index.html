@@ -123,15 +123,79 @@ section{padding:84px 0}
 .mail{display:inline-block;font:700 clamp(18px,3vw,28px) Outfit;margin-bottom:26px}
 footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
 @media(prefers-reduced-motion:reduce){.chip,.caret{animation:none}html{scroll-behavior:auto}.glass,.photo{transition:none}}
+
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60}
+.floaters{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.fl{position:absolute;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:rgba(14,20,42,.55);border:1px solid var(--line);backdrop-filter:blur(6px);animation:fl 7s ease-in-out infinite;will-change:transform}
+.fl svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fl:nth-child(1){left:6%;top:18%;color:#7aa7ff}
+.fl:nth-child(2){left:90%;top:12%;color:#c9a2ff;animation-delay:-2s}
+.fl:nth-child(3){left:3%;top:52%;color:#14c8b4;animation-delay:-4s}
+.fl:nth-child(4){left:93%;top:46%;color:#ffd27a;animation-delay:-1s}
+.fl:nth-child(5){left:12%;top:82%;color:#ff8fb1;animation-delay:-3s}
+.fl:nth-child(6){left:86%;top:80%;color:#7aa7ff;animation-delay:-5s}
+@media(max-width:760px){.fl{display:none}}
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(255,255,255,.025);padding:16px 0;margin:0 -24px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq{display:flex;gap:44px;width:max-content;animation:mq 34s linear infinite;font:600 18px Outfit;color:var(--muted)}
+.mq span{display:flex;align-items:center;gap:44px;white-space:nowrap}
+.mq span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:56px 0 0}
+.stat{padding:26px 22px;text-align:center}
+.stat b{display:block;font:800 clamp(34px,5vw,52px) Outfit;line-height:1}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-size:15px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.svc .glass{padding:28px}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(79,140,255,.25),rgba(165,107,255,.25));border:1px solid var(--line);margin-bottom:18px;color:#cfd9ff}
+.ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:21px;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:15.5px}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.sk .glass{padding:28px}
+.sk h3{font-size:20px;margin-bottom:20px}
+.bar{margin-bottom:16px}
+.bar:last-child{margin-bottom:0}
+.bt{display:flex;justify-content:space-between;font-size:15px;margin-bottom:7px}
+.bt em{font-style:normal;color:var(--muted);font-size:13.5px}
+.bf{height:8px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
+.bf i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+.sk .glass.in .bf i{width:var(--w)}
+.ghs{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.ghs .glass{padding:20px;display:grid;place-items:center;min-height:200px}
+.ghs img{max-width:100%;height:auto}
+.ghs .wide{grid-column:1/-1}
+@media(max-width:760px){.ghs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.mq,.fl{animation:none}.bf i{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3zM9 12l2 2 4-4"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+</defs></svg>
+<div id="prog"></div>
+<div class="floaters" aria-hidden="true">
+<div class="fl" data-d=".05"><svg><use href="#i-code"/></svg></div>
+<div class="fl" data-d=".09"><svg><use href="#i-bolt"/></svg></div>
+<div class="fl" data-d=".07"><svg><use href="#i-db"/></svg></div>
+<div class="fl" data-d=".11"><svg><use href="#i-gear"/></svg></div>
+<div class="fl" data-d=".06"><svg><use href="#i-shield"/></svg></div>
+<div class="fl" data-d=".1"><svg><use href="#i-cpu"/></svg></div>
+</div>
+
 
 <nav class="top">
   <div class="wrap">
     <a href="#top" class="logo g">fronre</a>
-    <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+    <ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
     <a class="pill" href="#contact">Hire me</a>
   </div>
 </nav>
@@ -156,6 +220,9 @@ footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
       </div>
     </div>
   </header>
+  <div class="marquee" aria-hidden="true"><div class="mq"><span>FastAPI</span><span>Python</span><span>Pydantic</span><span>Clean Architecture</span><span>MCP</span><span>TypeScript</span><span>Electron</span><span>React</span><span>SQLite</span><span>Node.js</span><span>Docker</span><span>MongoDB</span><span>ESP32</span><span>Blockchain</span><span>FastAPI</span><span>Python</span><span>Pydantic</span><span>Clean Architecture</span><span>MCP</span><span>TypeScript</span><span>Electron</span><span>React</span><span>SQLite</span><span>Node.js</span><span>Docker</span><span>MongoDB</span><span>ESP32</span><span>Blockchain</span></div></div>
+  <div class="stats"><div class="glass stat"><b class="g" data-n="30" data-s="+">0</b><span>Public repositories</span></div><div class="glass stat"><b class="g" data-n="295" data-s="+">0</b><span>Commits on PT-MCP-Bridge</span></div><div class="glass stat"><b class="g" data-n="200" data-s="+">0</b><span>Students in the Mishkat trial</span></div><div class="glass stat"><b class="g" data-n="6" data-s="">0</b><span>Featured projects</span></div></div>
+
 
   <section id="about">
     <div class="head"><h2>About <span class="g">me</span></h2></div>
@@ -172,13 +239,23 @@ footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
     </div>
   </section>
 
+  <section id="services">
+    <div class="head"><h2>What I <span class="g">build</span></h2><p>The kinds of work I take on, each backed by a project below.</p></div>
+    <div class="svc">
+      <div class="glass" data-tilt><div class="ico"><svg><use href="#i-server"/></svg></div><h3>Backend APIs</h3><p>Typed FastAPI services with validation, authentication and automatic OpenAPI docs, structured with Clean Architecture.</p></div>
+      <div class="glass" data-tilt><div class="ico"><svg><use href="#i-cpu"/></svg></div><h3>AI-to-tool integrations</h3><p>MCP servers that let AI agents plan, validate and act on real software, like building networks in Cisco Packet Tracer.</p></div>
+      <div class="glass" data-tilt><div class="ico"><svg><use href="#i-box"/></svg></div><h3>Desktop applications</h3><p>Offline-first Windows apps with Electron, React and SQLite, including encrypted backups and printing in Arabic.</p></div>
+      <div class="glass" data-tilt><div class="ico"><svg><use href="#i-shield"/></svg></div><h3>Data, IoT and security</h3><p>Database labs, ESP32 monitoring, and experiments with blockchain and integrity models.</p></div>
+    </div>
+  </section>
+
   <section id="skills">
-    <div class="head"><h2>Skills &amp; <span class="g">tools</span></h2><p>What I work with, grouped by area.</p></div>
-    <div class="skills">
-      <div class="glass" data-tilt><h3>Backend</h3><div class="tags"><span class="h">FastAPI</span><span class="h">Python</span><span>Pydantic</span><span>Django</span><span>Node.js</span><span>Express</span><span>REST design</span></div></div>
-      <div class="glass" data-tilt><h3>Data</h3><div class="tags"><span>MongoDB</span><span>Cassandra</span><span>Spark</span><span>Docker</span></div></div>
-      <div class="glass" data-tilt><h3>Frontend &amp; mobile</h3><div class="tags"><span>TypeScript</span><span>Vite</span><span>Kotlin</span></div></div>
-      <div class="glass" data-tilt><h3>Security &amp; IoT</h3><div class="tags"><span>Blockchain</span><span>Clark–Wilson</span><span>SSI</span><span>ESP32</span><span>Embedded C++</span></div></div>
+    <div class="head"><h2>Skills &amp; <span class="g">expertise</span></h2><p>How much I use each tool, by area.</p></div>
+    <div class="sk">
+      <div class="glass"><h3>Backend</h3><div class="bar"><div class="bt"><span>FastAPI</span><em>Daily use</em></div><div class="bf"><i style="--w:92%"></i></div></div><div class="bar"><div class="bt"><span>Python</span><em>Daily use</em></div><div class="bf"><i style="--w:90%"></i></div></div><div class="bar"><div class="bt"><span>Pydantic</span><em>Daily use</em></div><div class="bf"><i style="--w:85%"></i></div></div><div class="bar"><div class="bt"><span>REST API design</span><em>Daily use</em></div><div class="bf"><i style="--w:85%"></i></div></div><div class="bar"><div class="bt"><span>Node.js and Express</span><em>Comfortable</em></div><div class="bf"><i style="--w:65%"></i></div></div><div class="bar"><div class="bt"><span>Django</span><em>Comfortable</em></div><div class="bf"><i style="--w:60%"></i></div></div></div>
+      <div class="glass"><h3>Frontend &amp; desktop</h3><div class="bar"><div class="bt"><span>TypeScript</span><em>Comfortable</em></div><div class="bf"><i style="--w:72%"></i></div></div><div class="bar"><div class="bt"><span>React</span><em>Comfortable</em></div><div class="bf"><i style="--w:68%"></i></div></div><div class="bar"><div class="bt"><span>Electron</span><em>Comfortable</em></div><div class="bf"><i style="--w:65%"></i></div></div><div class="bar"><div class="bt"><span>Vite</span><em>Comfortable</em></div><div class="bf"><i style="--w:60%"></i></div></div></div>
+      <div class="glass"><h3>Data &amp; DevOps</h3><div class="bar"><div class="bt"><span>SQLite</span><em>Comfortable</em></div><div class="bf"><i style="--w:72%"></i></div></div><div class="bar"><div class="bt"><span>MongoDB</span><em>Comfortable</em></div><div class="bf"><i style="--w:65%"></i></div></div><div class="bar"><div class="bt"><span>Docker</span><em>Comfortable</em></div><div class="bf"><i style="--w:65%"></i></div></div><div class="bar"><div class="bt"><span>Cassandra</span><em>Learning</em></div><div class="bf"><i style="--w:48%"></i></div></div><div class="bar"><div class="bt"><span>Spark</span><em>Learning</em></div><div class="bf"><i style="--w:45%"></i></div></div></div>
+      <div class="glass"><h3>Security, IoT &amp; AI</h3><div class="bar"><div class="bt"><span>MCP servers</span><em>Comfortable</em></div><div class="bf"><i style="--w:75%"></i></div></div><div class="bar"><div class="bt"><span>Clark–Wilson model</span><em>Comfortable</em></div><div class="bf"><i style="--w:65%"></i></div></div><div class="bar"><div class="bt"><span>ESP32 and embedded</span><em>Comfortable</em></div><div class="bf"><i style="--w:55%"></i></div></div><div class="bar"><div class="bt"><span>Machine learning</span><em>Learning</em></div><div class="bf"><i style="--w:35%"></i></div></div></div>
     </div>
   </section>
 
@@ -246,6 +323,15 @@ footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
     </div>
   </section>
 
+  <section id="activity">
+    <div class="head"><h2>GitHub <span class="g">activity</span></h2><p>Live stats from my profile.</p></div>
+    <div class="ghs">
+      <div class="glass"><img loading="lazy" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=fronre&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" onerror="this.parentNode.style.display='none'"></div>
+      <div class="glass"><img loading="lazy" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=fronre&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" onerror="this.parentNode.style.display='none'"></div>
+      <div class="glass wide"><img loading="lazy" alt="Contribution streak" src="https://github-readme-streak-stats.herokuapp.com/?user=fronre&theme=tokyonight&hide_border=true&background=00000000" onerror="this.parentNode.style.display='none'"></div>
+    </div>
+  </section>
+
   <section id="contact" class="contact">
     <div class="glass" data-tilt>
       <h2>Let's build <span class="g">something</span></h2>
@@ -282,6 +368,27 @@ document.getElementById("filters").addEventListener("click",function(e){
   document.querySelectorAll("#grid .card").forEach(function(c){c.classList.toggle("hide",b.dataset.f!=="all"&&c.dataset.c!==b.dataset.f)});
 });
 document.getElementById("fth").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;document.getElementById("fmain").src=b.dataset.s;document.querySelectorAll("#fth button").forEach(function(x){x.classList.toggle("on",x===b)})});
+
+// scroll progress + floaters parallax
+(function(){
+  var prog=document.getElementById("prog"),fl=[].slice.call(document.querySelectorAll(".fl"));
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function on(){var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?scrollY/h*100:0)+"%";
+    if(!reduce)fl.forEach(function(f){f.style.marginTop=(-scrollY*parseFloat(f.dataset.d))+"px"})}
+  addEventListener("scroll",on,{passive:true});on();
+})();
+// count-up numbers and skill bars when visible
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target;
+    if(el.dataset.n){var n=+el.dataset.n,t0=null;
+      if(reduce){el.textContent=n+el.dataset.s;return}
+      (function step(t){if(!t0)t0=t;var k=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)))+el.dataset.s;if(k<1)requestAnimationFrame(step)})(performance.now());
+    }else el.classList.add("in");
+  })},{threshold:.25});
+  document.querySelectorAll("[data-n], .sk .glass").forEach(function(x){io.observe(x)});
+})();
 // 3D tilt cards
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:hover)").matches){
   document.querySelectorAll("[data-tilt]").forEach(function(el){
