@@ -87,6 +87,17 @@ section{padding:84px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
 .card{display:flex;flex-direction:column}
 .card.hide{display:none}
+.feat{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr}
+.feat .gal{background:#0c1330;padding:14px;display:flex;flex-direction:column;gap:10px}
+.feat .main{aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0a1026}
+.feat .main img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.th{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.th button{padding:0;border:2px solid transparent;border-radius:9px;overflow:hidden;cursor:pointer;background:none;aspect-ratio:16/10;opacity:.65;transition:.2s}
+.th button.on,.th button:hover{opacity:1;border-color:var(--teal)}
+.th img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.feat .b{justify-content:center}
+@media(max-width:860px){.feat{grid-template-columns:1fr}}
+
 .shot{aspect-ratio:16/9;overflow:hidden;background:#0c1330;display:grid;place-items:center}
 .shot img{width:100%;height:100%;object-fit:cover;display:block}
 .tile{font:800 clamp(26px,3.4vw,36px) Outfit;letter-spacing:-.03em;text-align:center;padding:16px}
@@ -174,9 +185,18 @@ footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:14px}
   <section id="projects">
     <div class="head"><h2>Featured <span class="g">projects</span></h2><p>A selection from my GitHub. Each card opens the code.</p></div>
     <div class="filters" id="filters">
-      <button class="on" data-f="all">All</button><button data-f="api">APIs</button><button data-f="ai">AI / MCP</button><button data-f="web">Web</button><button data-f="iot">IoT &amp; Security</button>
+      <button class="on" data-f="all">All</button><button data-f="api">APIs</button><button data-f="ai">AI / MCP</button><button data-f="app">Desktop</button><button data-f="web">Web</button><button data-f="iot">IoT &amp; Security</button>
     </div>
     <div class="grid" id="grid">
+      <article class="glass card feat" data-c="app">
+  <div class="gal"><div class="main"><img id="fmain" src="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/home.png" alt="Mishkat home screen (sample data)"></div>
+  <div class="th" id="fth"><button type="button" class="on" data-s="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/home.png" aria-label="Show Home screen"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/home.png" alt=""></button><button type="button" class="" data-s="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/attendance.png" aria-label="Show Attendance screen"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/attendance.png" alt=""></button><button type="button" class="" data-s="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/memorization.png" aria-label="Show Memorization screen"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/memorization.png" alt=""></button><button type="button" class="" data-s="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/finance.png" aria-label="Show Fees screen"><img loading="lazy" src="https://raw.githubusercontent.com/fronre/quran-school-manager/main/docs/screenshots/finance.png" alt=""></button></div></div>
+  <div class="b"><h3>Mishkat (الشهاب)</h3>
+  <p>Offline Windows app for running Quran schools and associations: students and guardians, groups and teachers, attendance, memorization tracking with a map of the 114 surahs, monthly fees with numbered receipts, reports and printing in Arabic.</p>
+  <p>Per-user roles, an append-only activity log and encrypted automatic backups. Trialed with one association of 200+ students. Screenshots use sample data.</p>
+  <div class="tags"><span>TypeScript</span><span>Electron</span><span>React</span><span>SQLite</span><span>Vitest</span></div>
+  <a class="code" href="https://github.com/fronre/quran-school-manager" target="_blank" rel="noopener">View code</a></div>
+</article>
       <article class="glass card" data-c="api" data-tilt>
         <div class="shot tile t1">Clark–Wilson Tool</div>
         <div class="b"><h3>Clark–Wilson Modeling Tool</h3>
@@ -261,6 +281,7 @@ document.getElementById("filters").addEventListener("click",function(e){
   document.querySelectorAll("#filters button").forEach(function(x){x.classList.toggle("on",x===b)});
   document.querySelectorAll("#grid .card").forEach(function(c){c.classList.toggle("hide",b.dataset.f!=="all"&&c.dataset.c!==b.dataset.f)});
 });
+document.getElementById("fth").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;document.getElementById("fmain").src=b.dataset.s;document.querySelectorAll("#fth button").forEach(function(x){x.classList.toggle("on",x===b)})});
 // 3D tilt cards
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:hover)").matches){
   document.querySelectorAll("[data-tilt]").forEach(function(el){
