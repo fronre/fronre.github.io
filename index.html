@@ -506,10 +506,10 @@ if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:ho
   function build(){
     var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
     ctx=new AC();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
-    var f=ctx.createBiquadFilter();f.type="lowpass";f.frequency.value=700;f.connect(master);
+    var f=ctx.createBiquadFilter();f.type="lowpass";f.frequency.value=420;f.connect(master);
     [110,164.81,220,277.18].forEach(function(hz,i){var o=ctx.createOscillator(),g=ctx.createGain();
-      o.type=i%2?"sine":"triangle";o.frequency.value=hz;o.detune.value=(i-1.5)*6;g.gain.value=.22/(i+1.2);o.connect(g);g.connect(f);o.start()});
-    var lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.07;lg.gain.value=260;lfo.connect(lg);lg.connect(f.frequency);lfo.start();
+      o.type="sine";o.frequency.value=hz;o.detune.value=(i-1.5)*6;g.gain.value=.16/(i+1.4);o.connect(g);g.connect(f);o.start()});
+    var lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.07;lg.gain.value=140;lfo.connect(lg);lg.connect(f.frequency);lfo.start();
     return true;
   }
   function blip(freq,vol){
@@ -521,15 +521,15 @@ if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:ho
   btn.addEventListener("click",function(){
     if(!ctx&&!build())return;
     on=!on;if(ctx.state==="suspended")ctx.resume();
-    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.linearRampToValueAtTime(on?.16:0,ctx.currentTime+1.2);
+    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.linearRampToValueAtTime(on?.06:0,ctx.currentTime+1.8);
     btn.setAttribute("aria-pressed",on?"true":"false");btn.setAttribute("aria-label",on?"Turn sound off":"Turn sound on");
-    if(on)blip(520,.07);
+    if(on)blip(520,.025);
   });
   document.addEventListener("pointerover",function(e){
-    var t=e.target.closest&&e.target.closest("a.btn,.pill,.filters button,.glass");
-    if(t&&t!==last){last=t;blip(380+Math.random()*180,.035)}else if(!t)last=null;
+    var t=e.target.closest&&e.target.closest("a.btn,.pill,.filters button");
+    if(t&&t!==last){last=t;blip(420,.012)}else if(!t)last=null;
   },{passive:true});
-  document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("a,button");if(t&&t!==btn)blip(660,.05)});
+  document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("a,button");if(t&&t!==btn)blip(560,.02)});
 })();
 </script>
 </body>
